@@ -14,12 +14,24 @@ we need to keep a track of L-R and U-D compliments
 As long as the compliments match we will be home
 LRRRUUDDLL
 '''
-def findHome(str):
-    moveMap = {'L':0, 'R':0, 'U':0, 'D':0}
-    for item in str:
-        moveMap[item] += 1
+def findHome(moves):
+    if (len(moves)%2 != 0):
+        return False
 
-    return (moveMap['L'] == moveMap['R'] and moveMap['U'] == moveMap['D'])
+    x = 0
+    y = 0
+
+    for item in moves:
+        if (item == 'L'):
+            x += 1
+        elif (item == 'R'):
+            x -= 1
+        elif (item == 'U'):
+            y += 1
+        else:
+            y -= 1
+
+    return (x==y==0)
 
 print(findHome("LR"))
 print(findHome("URURD"))
